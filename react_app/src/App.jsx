@@ -1,17 +1,33 @@
-import React from "react";
+import React, { Component } from "react";
 
-function App() {
-  return (
-    <React.Fragment>
-      <label>入力ホーム</label>
-      <input
-        type="text"
-        onChange={() => {
-          console.log("I am Click.");
-        }}
-      />
-    </React.Fragment>
-  );
+const App = () => {
+  return <Counter></Counter>;
+};
+
+class Counter extends Component {
+  constructor(props) {
+    super(props);
+    console.log(this.state);
+    this.state = { count: 5 };
+  }
+
+  addHandle = () => {
+    this.setState({ count: this.state.count + 1 });
+  };
+
+  descHandle = () => {
+    this.setState({ count: this.state.count - 1 });
+  };
+
+  render() {
+    return (
+      <React.Fragment>
+        <div>Counter: {this.state.count}</div>
+        <button onClick={this.addHandle}>追加</button>
+        <button onClick={this.descHandle}>減少</button>
+      </React.Fragment>
+    );
+  }
 }
 
 export default App;
